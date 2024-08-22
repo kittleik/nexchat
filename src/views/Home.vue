@@ -5,7 +5,7 @@ import { useRouter } from 'vue-router';
 const posts = ref([
   {
     author: 'nq4sq9zf0q63u5n562sask237h4tzuhkr0h4xa...',
-    content: 'This is a sample message to display in the box.',
+    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat.',
     timestamp: 'August 22, 2024, 10:30 AM',
   },
 ]);
@@ -74,6 +74,7 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px 20px;
+  min-width: 400px;
   max-width: 600px;
   margin-bottom: 20px;
 }
