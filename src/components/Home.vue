@@ -18,92 +18,90 @@ const goToNewPost = () => {
 </script>
 
 <template>
-  <h1>neXchat</h1>
+  <div class="content">
+    <h1>neXchat</h1>
 
-  <button @click="goToNewPost" class="new-post-button">New Post</button>
+    <button @click="goToNewPost" class="new-post-button">New Post</button>
 
-  <div v-for="(post, index) in posts" :key="index" class="message-box">
-    <div class="message-header">
-      <span class="author">{{ post.author }}</span>
-    </div>
-    <div class="message-content">
-      {{ post.content }}
-    </div>
-    <div class="message-footer">
-      <span class="timestamp">{{ post.timestamp }}</span>
+    <div v-for="(post, index) in posts" :key="index" class="message-box">
+      <div class="message-header">
+        <span class="author">{{ post.author }}</span>
+      </div>
+      <div class="message-content">
+        {{ post.content }}
+      </div>
+      <div class="message-footer">
+        <span class="timestamp">{{ post.timestamp }}</span>
+      </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-body {
+.content {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 20px; /* Add padding to create space from the top and sides */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 20px; /* Add padding around the content */
 }
 
 h1 {
-  margin-top: 0; /* Remove any top margin */
-  margin-bottom: 20px; /* Adjust bottom margin to control space between h1 and the box */
+  margin-top: 0;
+  margin-bottom: 20px;
+  text-align: center; /* Center the title text */
 }
 
 .new-post-button {
   display: inline-block;
-  background-color: #007bff; /* Blue background */
-  color: white; /* White text */
-  padding: 10px 20px; /* Padding for the button */
-  font-size: 1em; /* Font size */
-  border: none; /* Remove default border */
-  border-radius: 5px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  margin-bottom: 20px; /* Space below the button */
-  text-align: center; /* Center text */
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .new-post-button:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+  background-color: #0056b3;
 }
 
 .message-box {
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 20px;
-  max-width: 400px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-bottom: 20px; /* Add margin at the bottom for spacing */
+  padding: 15px 20px;
+  max-width: 600px;
+  margin-bottom: 20px;
 }
 
 .message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 10px;
-  text-align: left; /* Align the header content to the left */
-  width: 100%; /* Ensure full width for alignment */
 }
 
 .author {
   font-weight: bold;
   color: #333;
-  display: block; /* Ensure author spans the full width */
-  text-align: left; /* Align author text to the left */
+  text-align: left;
 }
 
 .message-content {
   font-size: 1em;
   color: #555;
-  line-height: 1.4;
-  flex-grow: 1;
-  margin-bottom: 10px;
-  text-align: left; /* Align message content to the left */
-  width: 100%; /* Ensure full width for alignment */
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: left;
 }
 
 .message-footer {
   display: flex;
   justify-content: flex-end;
-  width: 100%; /* Ensure full width for alignment */
 }
 
 .timestamp {
