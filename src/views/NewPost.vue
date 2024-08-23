@@ -51,8 +51,7 @@ const submitPost = () => {
   display: flex;
   justify-content: center;  /* Center horizontally */
   align-items: flex-start;  /* Align to the top */
-  min-height: 100vh;  /* Ensure the container takes the full viewport height */
-  padding: 20px;
+  padding-top: 20px;
   box-sizing: border-box;  /* Ensure padding is included in the width/height calculation */
   overflow: hidden;  /* Prevent unnecessary scrollbars */
 }

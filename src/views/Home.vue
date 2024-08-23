@@ -100,8 +100,9 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px 20px;
-  width: 500px;
   margin-bottom: 20px;
+  max-width: 500px;
+  width: 100%;
 }
 
 .message-header {
