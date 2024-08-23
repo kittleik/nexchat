@@ -25,9 +25,10 @@
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { defineEmits } from 'vue';
+import {posts} from "../store.ts";
 
 // Assume the author is set when the user is logged in
-const author = ref('nq4sq9zf0q63u5n562sask237h4tzuhkr0h4xa...');  // Replace with the actual logged-in user's public key
+const author = ref('nqtsq5g54cxvq0s536s8nhqynmk43ucyhgyezp23vh6gp9yr');  // Replace with the actual logged-in user's public key
 
 const content = ref('');
 const emit = defineEmits(['add-post']);
@@ -41,6 +42,7 @@ const submitPost = () => {
   };
   emit('add-post', newPost);
   content.value = '';
+  posts.value.push(newPost)
   router.push({ name: 'Home' }); // Redirect to home page after submission
 };
 </script>

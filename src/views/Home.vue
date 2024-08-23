@@ -1,19 +1,15 @@
 <script setup lang="ts">
-import { ref } from 'vue';
 import { useRouter } from 'vue-router';
-
-const posts = ref([
-  {
-    author: 'nq4sq9zf0q63u5n562sask237h4tzuhkr0h4xa...',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip consequat.',
-    timestamp: 'August 22, 2024, 10:30 AM',
-  },
-]);
+import {posts} from "../store.ts";
 
 const router = useRouter();
 
 const goToNewPost = () => {
   router.push({ name: 'NewPost' });
+};
+
+const goToProfile = (author: string) => {
+  router.push({ name: 'Profile', params: { author } });
 };
 
 // Dummy connect function
@@ -31,7 +27,9 @@ const connect = () => {
 
     <div v-for="(post, index) in posts" :key="index" class="message-box">
       <div class="message-header">
-        <span class="author">{{ post.author }}</span>
+        <span class="author-link" @click="goToProfile(post.author)">
+          {{ post.author }}
+        </span>
       </div>
       <div class="message-content">
         {{ post.content }}
@@ -116,6 +114,24 @@ h1 {
   font-weight: bold;
   color: #333;
   text-align: left;
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Hides the overflow text */
+  text-overflow: ellipsis; /* Displays an ellipsis (...) where the text is cut off */
+  max-width: 100%; /* Ensures it doesn't exceed the container width */
+}
+
+.author-link {
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Hides the overflow text */
+  text-overflow: ellipsis; /* Displays an ellipsis (...) where the text is cut off */
+  max-width: 100%; /* Ensures it doesn't exceed the container width */
+}
+
+.author-link:hover {
+  color: #0056b3;
 }
 
 .message-content {
