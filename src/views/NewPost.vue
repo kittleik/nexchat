@@ -47,20 +47,22 @@ const submitPost = () => {
 
 <style scoped>
 .content {
+  font-family: Arial, sans-serif;
   display: flex;
-  justify-content: center; /* Center the container horizontally */
-  align-items: flex-start; /* Align the container to the top */
-  min-height: 100vh;
+  justify-content: center;  /* Center horizontally */
+  align-items: flex-start;  /* Align to the top */
+  min-height: 100vh;  /* Ensure the container takes the full viewport height */
   padding: 20px;
+  box-sizing: border-box;  /* Ensure padding is included in the width/height calculation */
+  overflow: hidden;  /* Prevent unnecessary scrollbars */
 }
 
 .new-post-container {
-  font-family: Arial, sans-serif;
   background-color: #fff;
   border: 1px solid #ddd;
   border-radius: 12px;
   padding: 25px;
-  max-width: 400px;
+  max-width: 500px;
   width: 100%;
 }
 

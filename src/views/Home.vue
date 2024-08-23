@@ -15,10 +15,16 @@ const router = useRouter();
 const goToNewPost = () => {
   router.push({ name: 'NewPost' });
 };
+
+// Dummy connect function
+const connect = () => {
+  alert('Connect button clicked!');
+};
 </script>
 
 <template>
   <div class="content">
+    <button @click="connect" class="connect-button">Connect</button>
     <h1>neXchat</h1>
 
     <button @click="goToNewPost" class="new-post-button">New Post</button>
@@ -44,6 +50,26 @@ const goToNewPost = () => {
   flex-direction: column; /* Stack items vertically */
   align-items: center; /* Center items horizontally */
   padding: 20px; /* Add padding around the content */
+  position: relative; /* Required for absolute positioning of the button */
+}
+
+.connect-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: #fff;
+  color: #007bff;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: 1px solid #007bff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.connect-button:hover {
+  background-color: #007bff;
+  color: #fff;
 }
 
 h1 {
@@ -74,8 +100,7 @@ h1 {
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 15px 20px;
-  min-width: 400px;
-  max-width: 600px;
+  width: 500px;
   margin-bottom: 20px;
 }
 
