@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 import {posts} from "../store.ts";
+import router from "../router";
 
 const route = useRoute();
 const postIdParam = Array.isArray(route.params.id) ? route.params.id[0] : route.params.id;
@@ -9,6 +10,11 @@ const postId = parseInt(postIdParam, 10);
 const author = route.params.author;
 
 const post = ref(posts.value.find(p => p.id === postId && p.author === author) || { author: '', content: '', timestamp: '' });
+
+const goToProfile = (author: string) => {
+  router.push({ name: 'Profile', params: { author } });
+};
+
 </script>
 
 <template>
@@ -17,7 +23,7 @@ const post = ref(posts.value.find(p => p.id === postId && p.author === author) |
       <h2>Post by {{ post.author }}</h2>
       <div class="message-box">
         <div class="message-header">
-          <span class="author">{{ post.author }}</span>
+          <span class="author" @click="goToProfile(post.author)">{{ post.author }}</span>
         </div>
         <div class="message-content">
           {{ post.content }}
@@ -61,12 +67,16 @@ const post = ref(posts.value.find(p => p.id === postId && p.author === author) |
 
 .author {
   font-weight: bold;
-  color: #333;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Hides the overflow text */
+  text-overflow: ellipsis; /* Displays an ellipsis (...) where the text is cut off */
+  max-width: 100%; /* Ensures it doesn't exceed the container width */
+}
+
+.author:hover {
+  color: #0056b3;
 }
 
 .message-content {
