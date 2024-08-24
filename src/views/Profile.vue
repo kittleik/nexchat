@@ -2,6 +2,7 @@
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 import {posts} from "../store.ts";
+import router from "../router";
 
 const route = useRoute();
 const author = ref(route.params.author);
@@ -9,12 +10,16 @@ const author = ref(route.params.author);
 const filteredPosts = computed(() =>
     posts.value.filter(post => post.author === author.value)
 );
+
+const goToPost = (id: number) => {
+  router.push({ name: 'Post', params: { author: author.value, id } });
+};
 </script>
 
 <template>
   <div class="content">
     <h2>{{ author }}'s Posts</h2>
-    <div v-for="(post, index) in filteredPosts" :key="index" class="message-box">
+    <div v-for="(post, index) in filteredPosts" :key="index" class="message-box" @click="goToPost(post.id)" style="cursor: pointer;">
       <div class="message-header">
         <span class="author">{{ post.author }}</span>
       </div>
