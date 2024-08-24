@@ -8,8 +8,13 @@ const goToNewPost = () => {
   router.push({ name: 'NewPost' });
 };
 
-const goToProfile = (author: string) => {
+const goToProfile = (author: string, event: MouseEvent) => {
+  event.stopPropagation(); // Prevent the post click event from firing
   router.push({ name: 'Profile', params: { author } });
+};
+
+const goToPost = (id: number, author: string) => {
+  router.push({ name: 'Post', params: { author, id } });  // Use the id and author from the post
 };
 
 // Dummy connect function
@@ -25,9 +30,9 @@ const connect = () => {
 
     <button @click="goToNewPost" class="new-post-button">New Post</button>
 
-    <div v-for="(post, index) in posts" :key="index" class="message-box">
+    <div v-for="(post, index) in posts" :key="index" class="message-box" @click="goToPost(post.id, post.author)" style="cursor: pointer;">
       <div class="message-header">
-        <span class="author-link" @click="goToProfile(post.author)">
+        <span class="author-link" @click="goToProfile(post.author, $event)">
           {{ post.author }}
         </span>
       </div>
