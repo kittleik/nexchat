@@ -76,7 +76,7 @@ const goToProfile = (author: string) => {
 }
 
 .author:hover {
-  color: #0056b3;
+  text-decoration: underline;
 }
 
 .message-content {
